@@ -33,8 +33,8 @@ export default function LMSDashboard() {
     };
 
     return (
-        <div className="min-h-screen bg-gray-50">
-            <div className="p-6 max-w-7xl mx-auto">
+        <div className="w-full max-h-screen overflow-y-scroll bg-gray-50">
+            <div className="p-6  mx-auto">
                 <h1 className="text-3xl font-bold text-gray-800">Learning Management (Admin)</h1>
                 <p className="text-gray-500 mb-6">Manage learning modules and track employee progress</p>
 

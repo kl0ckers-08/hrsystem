@@ -2,7 +2,7 @@
 import { NextResponse } from "next/server";
 import { jwtVerify } from "jose";
 import { connectDB } from "@/lib/mongodb";
-import EvaluationResult from "@/models/EvaluationResult";
+import EvaluationResult from "@/models/hr1/EvaluationResult";
 
 export async function GET(req: Request) {
     try {

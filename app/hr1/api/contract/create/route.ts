@@ -2,7 +2,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { GridFSBucket, ObjectId } from "mongodb";
 import { connectDB } from "@/lib/mongodb";
-import { Application } from "@/models/Applications";
+import { Application } from "@/models/hr1/Applications";
 import mongoose from "mongoose";
 
 export async function POST(req: NextRequest) {

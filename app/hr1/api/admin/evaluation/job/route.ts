@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/mongodb";
-import { Job } from "@/models/Job";
-import { Application } from "@/models/Applications";
+import { Job } from "@/models/hr1/Job";
+import { Application } from "@/models/hr1/Applications";
 
 export async function GET() {
     try {

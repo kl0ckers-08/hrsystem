@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import mongoose, { ObjectId } from "mongoose";
 import { GridFSBucket } from "mongodb";
 import { connectDB } from "@/lib/mongodb";
-import { Application } from "@/models/Applications";
+import { Application } from "@/models/hr1/Applications";
 
 export async function POST(req: NextRequest) {
   try {

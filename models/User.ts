@@ -1,33 +1,35 @@
-// ========================================
-// FILE 1: models/User.ts
-// ========================================
+// models/User.ts
 import { Schema, model, models } from "mongoose";
 
-const UserSchema = new Schema(
+export type UserRole = 
+  | "employee1"
+  | "hr1admin"
+  | "hr2admin"
+  | "hr3admin"
+  | "dead"
+  | "superadmin";
+
+interface IUser {
+  fullName: string;
+  email: string;
+  password: string;
+  role: UserRole;
+  createdAt?: Date;
+  updatedAt?: Date;
+}
+
+const UserSchema = new Schema<IUser>(
   {
-    fullName: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-      lowercase: true,
-      trim: true,
-    },
-    password: {
-      type: String,
-      required: true,
-      select: false,
-    },
+    fullName: { type: String, required: true, trim: true },
+    email: { type: String, required: true, unique: true, lowercase: true, trim: true },
+    password: { type: String, required: true, select: false },
     role: {
       type: String,
-      default: "employee",
+      enum: ["employee1", "hr1admin", "hr2admin", "hr3admin", "dead", "superadmin"],
+      default: "employee1",
     },
   },
   { timestamps: true }
 );
 
-export default models.User || model("User", UserSchema);
+export const User = models.User || model<IUser>("User", UserSchema);

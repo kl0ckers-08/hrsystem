@@ -2,7 +2,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import mongoose from "mongoose";
 import { connectDB } from "@/lib/mongodb";
-import Module from "@/models/module";
+import Module from "@/models/hr1/module";
 import multer from "multer";
 import { GridFsStorage } from "multer-gridfs-storage";
 import crypto from "crypto";

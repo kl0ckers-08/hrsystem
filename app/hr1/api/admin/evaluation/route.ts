@@ -3,7 +3,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Types } from "mongoose";
 import { connectDB } from "@/lib/mongodb";
-import { Application } from "@/models/Applications";
+import { Application } from "@/models/hr1/Applications";
 import mongoose from "mongoose";
 
 export async function GET(_req: NextRequest) {

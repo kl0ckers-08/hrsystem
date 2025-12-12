@@ -10,7 +10,7 @@ interface LoginResponse {
     user: {
         _id: string;
         email: string;
-        role: "employee" | "admin" | "hr" | "hr1admin";
+        role: "employee" | "admin" | "hr" | "hr1admin" | "hr2admin";
         name?: string;
     };
     message?: string;
@@ -73,6 +73,9 @@ export default function LoginForm({
             if (data.user.role === "hr1admin" ) {
                 console.log("📊 Redirecting to Admin Dashboard...");
                 router.push("/hr1/admin/");
+            } else if (data.user.role === "hr2admin") {
+                console.log("💼 Redirecting to Employee Dashboard...");
+                router.push("/hr2/admin/");
             } else if (data.user.role === "employee") {
                 console.log("💼 Redirecting to Employee Dashboard...");
                 router.push("/hr1/employee/job-postings");

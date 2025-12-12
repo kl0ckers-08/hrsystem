@@ -1,7 +1,7 @@
 // app/api/evaluation/questions/route.ts
 import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/mongodb";
-import Question from "@/models/Question";
+import Question from "@/models/hr1/Question";
 
 export async function GET() {
   try {

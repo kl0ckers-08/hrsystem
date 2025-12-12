@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { connectDB } from "@/lib/mongodb";
-import User from "@/models/User";
+import { User } from "@/models/User";
 import bcrypt from "bcryptjs";
 import { SignJWT } from "jose";
 
@@ -137,7 +137,7 @@ export async function POST(req: NextRequest) {
       id: user._id.toString(),
       email: user.email,
       fullName: user.fullName,
-      role: user.role || "employee",
+      role: user.role || "employee1",
     };
 
     // Sign JWT token

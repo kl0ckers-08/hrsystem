@@ -31,12 +31,19 @@ export function verifyToken(token: string): TokenPayload | null {
 
 // Get token from request
 export function getTokenFromRequest(req: NextRequest): string | null {
+  // 1. Check Authorization header first
   const authHeader = req.headers.get("authorization");
   if (authHeader?.startsWith("Bearer ")) {
     return authHeader.slice(7);
   }
+
+  // 2. Check HttpOnly cookie
+  const tokenCookie = req.cookies.get("token")?.value;
+  if (tokenCookie) return tokenCookie;
+
   return null;
 }
+
 
 // Middleware to verify auth
 export async function authMiddleware(req: NextRequest) {

@@ -3,8 +3,8 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { jwtVerify } from "jose";
 import { connectDB } from "@/lib/mongodb";
-import Question from "@/models/Question";
-import EvaluationResult from "@/models/EvaluationResult";
+import Question from "@/models/hr1/Question";
+import EvaluationResult from "@/models/hr1/EvaluationResult";
 
 export async function POST(req: NextRequest) {
     try {

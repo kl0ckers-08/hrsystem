@@ -4,7 +4,7 @@ import { Types } from 'mongoose';
 import mongoose from 'mongoose';
 import { GridFSBucket } from 'mongodb';
 import { connectDB } from '@/lib/mongodb';
-import { Application } from '@/models/Applications';
+import { Application } from '@/models/hr1/Applications';
 
 const ALLOWED_MIME_TYPES = ['application/pdf', 'image/jpeg', 'image/png'];
 const MAX_SIZE = 10 * 1024 * 1024; // 10MB

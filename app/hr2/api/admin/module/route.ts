@@ -1,7 +1,7 @@
 // app/hr2/api/admin/module/route.ts
 import { NextRequest, NextResponse } from "next/server";
 import  dbConnect  from "@/lib/db";
-import Module from "@/models/module";
+import Module from "@/models/hr1/module";
 import { writeFile, mkdir } from "fs/promises";
 import path from "path";
 import { verifyToken } from "@/lib/auth";

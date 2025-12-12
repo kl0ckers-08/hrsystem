@@ -3,7 +3,7 @@
 // ========================================
 import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/mongodb";
-import { Job } from "@/models/Job";
+import { Job } from "@/models/hr1/Job";
 import { Types } from "mongoose";
 
 // GET single job by ID
