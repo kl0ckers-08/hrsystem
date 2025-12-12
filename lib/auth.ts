@@ -29,7 +29,7 @@ export function verifyToken(token: string): TokenPayload | null {
   }
 }
 
-// Get token from request
+// Get token from requesta
 export function getTokenFromRequest(req: NextRequest): string | null {
   // 1. Check Authorization header first
   const authHeader = req.headers.get("authorization");

@@ -71,23 +71,66 @@ export default function AdminDashboard() {
 
     const fetchDashboardData = async () => {
         try {
-            const [trendRes, deptRes, completionRes, activitiesRes, statsRes] = await Promise.all([
-                axios.get("/hr1/api/dashboard/applicantsTrend"),
-                axios.get("/hr1/api/dashboard/departmentData"),
-                axios.get("/hr1/api/dashboard/completionData"),
-                axios.get("/hr1/api/dashboard/activities"),
-                axios.get("/hr1/api/dashboard/stats"),
+            setLoading(true);
+
+            const token = localStorage.getItem('token'); // or however you store JWT
+            const headers = {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            };
+
+            const [trendRes, deptRes, completionRes, activitiesRes, statsRes] = await Promise.allSettled([
+                axios.get("/hr1/api/dashboard/applicantsTrend", { headers }),
+                axios.get("/hr1/api/dashboard/departmentData", { headers }),
+                axios.get("/hr1/api/dashboard/completionData", { headers }),
+                axios.get("/hr1/api/dashboard/activities", { headers }),
+                axios.get("/hr1/api/dashboard/stats", { headers }),
             ]);
 
-            setApplicantsTrend(trendRes.data);
-            setDepartmentData(deptRes.data);
-            setCompletionData(completionRes.data);
-            setActivities(activitiesRes.data);
-            setStats(statsRes.data);
+            // Handle each result
+            if (trendRes.status === 'fulfilled') {
+                setApplicantsTrend(trendRes.value.data);
+            } else {
+                console.error('Failed to fetch trends:', trendRes.reason);
+                setApplicantsTrend([]);
+            }
 
-            setLoading(false);
-        } catch (err) {
+            if (deptRes.status === 'fulfilled') {
+                setDepartmentData(deptRes.value.data);
+            } else {
+                console.error('Failed to fetch departments:', deptRes.reason);
+                setDepartmentData([]);
+            }
+
+            if (completionRes.status === 'fulfilled') {
+                setCompletionData(completionRes.value.data);
+            } else {
+                console.error('Failed to fetch completion data:', completionRes.reason);
+                setCompletionData([]);
+            }
+
+            if (activitiesRes.status === 'fulfilled') {
+                setActivities(activitiesRes.value.data);
+            } else {
+                console.error('Failed to fetch activities:', activitiesRes.reason);
+                setActivities([]);
+            }
+
+            if (statsRes.status === 'fulfilled') {
+                setStats(statsRes.value.data);
+            } else {
+                console.error('Failed to fetch stats:', statsRes.reason);
+            }
+
+        } catch (err: any) {
             console.error("Error fetching dashboard data:", err);
+
+            // Handle authentication errors
+            if (err.response?.status === 401) {
+                // Redirect to login or refresh token
+                window.location.href = '/login';
+            }
+        } finally {
             setLoading(false);
         }
     };

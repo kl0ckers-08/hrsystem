@@ -32,6 +32,7 @@ export async function middleware(req: NextRequest) {
         if (token) {
             try {
                 const { payload } = await jwtVerify(token, new TextEncoder().encode(JWT_SECRET)) as { payload: JWTPayload };
+                console.log("TOKEN PAYLOAD:", payload);
 
                 // Redirect based on user role
                 switch (payload.role) {
@@ -98,7 +99,7 @@ export async function middleware(req: NextRequest) {
 
             case "employee2":
                 if (!pathname.startsWith("/hr2/employee")) {
-                    return NextResponse.redirect(new URL("/hr2/employee/job-postings", req.url));
+                    return NextResponse.redirect(new URL("/hr2/employee/dashboard", req.url));
                 }
                 break;
 

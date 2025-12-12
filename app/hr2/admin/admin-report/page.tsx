@@ -14,7 +14,7 @@ export default async function ReportsPage() {
   const stats = data.stats || {};         // ← optional: for dynamic stats later
   
     return (
-        <div className="min-h-screen bg-gray-50 p-6">
+        <div className="max-h-screen overflow-y-scroll bg-gray-50 p-6">
             <div className="max-w-7xl mx-auto">
                 <h1 className="text-3xl font-bold text-gray-800">Reports</h1>
                 <p className="text-gray-600 mb-8">Generate and download HR2 system reports</p>
